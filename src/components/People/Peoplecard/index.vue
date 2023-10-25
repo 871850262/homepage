@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
+const props = defineProps({
+  name: String,
+  type: String
+})
+
 const loading = ref(false)
 
 </script>
@@ -29,8 +34,8 @@ const loading = ref(false)
           <el-card :body-style="{ padding: '0px', marginBottom: '0px' }">
             <img src="../../../assets/img2.png" class="image" />
             <div style="padding: 10px">
-              <div>雷宇</div>
-              <div>硕士研究生</div>
+              <div>{{ props.name }}</div>
+              <div>{{ props.type }}</div>
             </div>
           </el-card>
         </template>
@@ -41,7 +46,28 @@ const loading = ref(false)
 
 <style lang="less" scoped>
 .peoplecardbody {
+  font-size: 16px;
   margin: 0 20px 20px 0;
   text-align: center;
+
+  .el-space {
+    width: 145px;
+    height: 200px;
+    padding: 0 !important;
+
+    .el-card {
+      .el-card__body {
+        &>div {
+          padding: 10px !important;
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
 }
 </style>

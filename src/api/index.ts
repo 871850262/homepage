@@ -1,18 +1,20 @@
 //api统一管理
 
-// import requests from '@/api/request'
-import mockRequest from '@/api/mockRequest'
+import requests from '@/api/request'
 
 export const reqGetBannerList = () => {
-  return mockRequest({ url: '/banner', method: 'get' })
+  return requests({ url: '/getSwiperImg', method: 'get' })
 }
 export const reqGetResearchList = () => {
-  return mockRequest({ url: '/research', method: 'get' })
+  return requests({ url: '/getResearchList', method: 'get' })
 }
 export const reqGetPublicationsList = (year: number) => {
-  return mockRequest({ url: `/publicationsList?year=${year}`, method: 'get' })
+  return requests({ url: `/getPublicationsList?year=${year}`, method: 'get' })
 }
 export const reqGetPublicationsYearIndex = () => {
-  return mockRequest({ url: '/publicationsYearIndex', method: 'get' })
+  return requests({ url: '/getPublicationsYearIndex', method: 'get' })
+}
+export const reqGetPeopleList = () => {
+  return requests({ url: '/getPeopleList', method: 'get' })
 }
 

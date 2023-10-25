@@ -11,6 +11,7 @@ let publicationsYearIndex = ref([{
 let publicationsList = ref([{
   id: 0,
   title: "",
+  year: 0,
   authors: "",
   journal: "",
   volume: "",
@@ -18,27 +19,25 @@ let publicationsList = ref([{
   PDFurl: ''
 }])
 let currentYear = ref(0)
+
 //请求年份列表
 const getPublicationsYearIndex = async () => {
   const res = await reqGetPublicationsYearIndex()
   publicationsYearIndex.value = res.data
-  currentYear.value = res.data[0].year
-  getPublicationsList(currentYear.value)
+  getPublicationsList(res.data[0].year)
 }
-const getPublicationsList = async (currentYear: number) => {
-  const res = await reqGetPublicationsList(currentYear)
-  publicationsList.value = res.data.data
-}
+
 //点击年份时请求对应年份的文章列表
-const askListByYear = async (year: number) => {
+const getPublicationsList = async (year: number) => {
   if (year !== currentYear.value) {
     currentYear.value = year
     const res = await reqGetPublicationsList(year)
     if (res.status === 200) {
-      publicationsList.value = res.data.data
+      publicationsList.value = res.data
     } else {
       publicationsList.value = [{
         id: 0,
+        year: 0,
         title: "",
         authors: "",
         journal: "",
@@ -59,7 +58,7 @@ onMounted(() => {
   <div class="publications-container">
     <ul class="yearbox">
       <li v-for="item in publicationsYearIndex" :key="item.id">
-        <a href="#" class="yeartab" @click="askListByYear(item.year)">{{ item.year }}</a>
+        <a href="#" class="yeartab" @click="getPublicationsList(item.year)">{{ item.year }}</a>
       </li>
     </ul>
     <div class="currentYear">{{ currentYear }}</div>
@@ -89,6 +88,7 @@ onMounted(() => {
         width: 100%;
         height: 100%;
         text-align: center;
+        font-size: 18px;
       }
     }
   }

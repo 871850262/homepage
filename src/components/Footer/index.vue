@@ -13,6 +13,7 @@ footer {
   padding-top: 20px;
   width: 100%;
   height: 100px;
+  font-size: 18px;
   text-align: center;
   border-top: 1px solid var(--el-menu-border-color);
 }

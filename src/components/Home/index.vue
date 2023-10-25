@@ -14,6 +14,7 @@ import RecentWork from '@/components/Home/RecentWork/index.vue'
 import News from '@/components/Home/News/index.vue'
 
 
+
 let bannerList = ref([{
   id: 0,
   imgUrl: ''
@@ -24,6 +25,7 @@ const getBannerList = async () => {
   bannerList.value = res.data
 }
 
+
 //生命周期钩子
 onMounted(() => {
   getBannerList()
@@ -32,13 +34,12 @@ onMounted(() => {
 
 <template>
   <!-- Swiper -->
-  <div>
-    <swiper :spaceBetween="30" :centeredSlides="true" :autoplay="{ delay: 4000, disableOnInteraction: false, }"
-      :pagination="{ clickable: true, }" :navigation="true" :modules="[Autoplay, Navigation, Pagination]"
-      class="mySwiper">
-      <swiper-slide v-for="item in bannerList" :key="item.id"><img :src="item.imgUrl"></swiper-slide>
-    </swiper>
-  </div>
+
+  <swiper :spaceBetween="30" :centeredSlides="true" :autoplay="{ delay: 4000, disableOnInteraction: false, }"
+    :pagination="{ clickable: true, }" :navigation="true" :modules="[Autoplay, Navigation, Pagination]" class="mySwiper">
+    <swiper-slide v-for="item in bannerList" :key="item.id"><img :src="item.imgUrl"></swiper-slide>
+  </swiper>
+
   <div class="content">
     <RecentWork></RecentWork>
     <News></News>

@@ -20,11 +20,8 @@ onMounted(() => {
 
 <template>
   <div class="body">
-    <Researchcard v-for="item in researchList" :key="item.id">
-      <template #title>{{ item.title }}</template>
-      <template #content>{{ item.content }}</template>
+    <Researchcard v-for="item in researchList" :key="item.id" :title="item.title" :content="item.content">
     </Researchcard>
-
   </div>
 </template>
 

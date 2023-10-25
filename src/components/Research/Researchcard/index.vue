@@ -1,20 +1,29 @@
 <script setup lang="ts">
-
+// import { defineProps } from "vue";
+const props = defineProps({ title: String, content: String })
 </script>
 
 <template>
   <div class="body">
     <h3>
-      <slot name="title"></slot>
+      {{ props.title }}
     </h3>
-    <div>
-      <slot name="content"></slot>
-    </div>
+    <p>
+      {{ props.content }}
+    </p>
   </div>
 </template>
 
 <style lang="less" scoped>
 .body {
-  margin: 20px 0 !important;
+  margin-top: 20px !important;
+
+  h3 {
+    font-size: 21px;
+  }
+
+  p {
+    font-size: 18px;
+  }
 }
 </style>

@@ -24,9 +24,12 @@ function openPDF(url: string) {
 
 <style lang="less" scoped>
 .paperCard-container {
+  font-size: 18px;
   margin: 10px 0;
 
   h3 {
+    font-size: 21px;
+
     &:hover {
       cursor: pointer;
       color: var(--el-menu-active-color);
