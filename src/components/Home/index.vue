@@ -26,6 +26,8 @@ const getBannerList = async () => {
 }
 
 
+
+
 //生命周期钩子
 onMounted(() => {
   getBannerList()
@@ -37,7 +39,7 @@ onMounted(() => {
 
   <swiper :spaceBetween="30" :centeredSlides="true" :autoplay="{ delay: 4000, disableOnInteraction: false, }"
     :pagination="{ clickable: true, }" :navigation="true" :modules="[Autoplay, Navigation, Pagination]" class="mySwiper">
-    <swiper-slide v-for="item in bannerList" :key="item.id"><img :src="item.imgUrl"></swiper-slide>
+    <swiper-slide v-for="item in bannerList" :key="item.id"><img :src="item.imgUrl" loading="lazy"></swiper-slide>
   </swiper>
 
   <div class="content">

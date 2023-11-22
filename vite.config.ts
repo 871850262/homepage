@@ -9,10 +9,10 @@ import postcsspxtoviewport from 'postcss-px-to-viewport'
 // import postCssPxToRem from "postcss-pxtorem"
 
 
-const plugins = []
+const exPlugins = []
 
 if (process.env.NODE_ENV === 'production') {
-  plugins.push(
+  exPlugins.push(
     visualizer({
       open: true,
       gzipSize: true,
@@ -30,7 +30,7 @@ export default defineConfig({
     Components({
       resolvers: [ElementPlusResolver()],
     }),
-    ...plugins,
+    ...exPlugins,
     vue(),
   ],
   css: {
